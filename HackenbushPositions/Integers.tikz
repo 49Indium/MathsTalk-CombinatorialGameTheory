@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-6, 0) {};
+		\node [style=none] (1) at (6, 0) {};
+		\node [style=Standard, label=below:{1}] (2) at (0, 0) {};
+		\node [style=Standard] (3) at (0, 3) {};
+		\node [style=Standard, visible on=<2->] (4) at (-3, 3) {};
+		\node [style=Standard, visible on=<2->, label=below:{\only<2->{\alt<2>{1}{4}}}] (5) at (-3, 0) {};
+		\node [style=Standard, visible on=<3->] (6) at (-5, 6) {};
+		\node [style=Standard, visible on=<3->] (7) at (-1, 6) {};
+		\node [style=Standard, visible on=<4->, label=below:{\only<4->{\alt<4>{-1}{-2}}}] (8) at (3, 0) {};
+		\node [style=Standard, visible on=<4->] (9) at (3, 3) {};
+		\node [style=Standard, visible on=<5->] (10) at (3, 6) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=Ground] (0.center) to (1.center);
+		\draw [style=Blue] (2) to (3);
+		\draw [style=Blue, visible on=<2->] (5) to (4);
+		\draw [style=Blue, visible on=<3->] (4) to (6);
+		\draw [style=Blue, visible on=<3->] (7) to (4);
+		\draw [style=Blue, visible on=<3->] (7) to (6);
+		\draw [style=Red, visible on=<4->] (9) to (8);
+		\draw [style=Red, visible on=<5->] (10) to (9);
+	\end{pgfonlayer}
+\end{tikzpicture}

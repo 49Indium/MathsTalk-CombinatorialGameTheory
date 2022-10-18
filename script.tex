@@ -1,0 +1,113 @@
+\documentclass[]{article}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage[margin=1.22in]{geometry}
+
+\newcommand{\nextslide}{$\dagger$}
+\newcommand{\nextslides}{$\ddagger$}
+\newcommand{\fuzzy}{\parallel}
+\newcommand{\nfuzzy}{\nparallel}
+\renewcommand{\star}{\mathord{*}}
+\newcommand{\up}{\mathord{\uparrow}}
+\newcommand{\doubleup}{\mathord{\Uparrow}}
+\newcommand{\down}{\mathord{\downarrow}}
+\newcommand{\doubledown}{\mathord{\Downarrow}}
+
+%opening
+\title{Combinatorial Game Theory \& The Fuzzy Consequences}
+\author{Isaac Beh}
+\date{14th of October 2022}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{section}{-1}
+\section{Information for Future Readers}
+Hello there. I have already given this talk for MSS (the UQ maths society), however, feel free to read the rough script I followed. Daggers, such as \nextslide{}, indicate that you should go forward a slide. Double daggers, such as \nextslides{}, indicate that you should go forward multiple slides.
+
+\section{Introduction to Hackenbush}
+Hello. I'll jump straight in and teach you about a game I like; the game of Hackenbush.\nextslide{}
+
+Hackenbush is played on a graph, with edges coloured either red or blue. There is a root node called the ground, that we often expand out\nextslide{} to make the playing field cleaner. Two players -- called Red and Blue -- take turns in cutting edges of their own colours. For example, if Blue is to go first, he could cut this edge.\nextslide{} Red could then follow by cutting this edge\nextslide{} and so on.\nextslides{} When a player cuts an edge, all edges not connected to the ground also disappear.\nextslide{} This continues until one player cannot make any moves.\nextslides{} This player is the loser.\nextslide{}
+
+\section{Basic Strategy \& Intuition}
+After playing a few matches, you might develop some strategies or intuition. Take for example the following position. We can see that it favours Blue. We can also see that the outer most edges don't really affect the overall advantage. They ``cancel out" in some sense. We also have the intuition that the middle component is not as advantageous as a plain blue edge. If blue was to go, the strongest move would be to the central component. Likewise, even though Red still loses, there is some sense that the edge above is ``best". These are vague notions for now, so we'll take steps to formalise them.\nextslide{}
+
+\section{The Integers}
+We'll start with some simple cases, from the perspective of Blue. Consider just an edge of one colour. A single edge could be viewed as a 1 move advantage, so we'll give it the value ``1". Likewise $n$ edges of the same colour should be $n$ points.\nextslide{} It doesn't matter the arrangement of these edges if Blue is smart.\nextslide{}
+
+Introducing red edges, each edge ``cancels" one point of advantage, so $n$ red edges by themselves are valued to be $-n$.\nextslides{}
+
+With this, we can find the the winner of our colour-separated games by adding the values of each component together. Note I will display each component value here and the sum here.\nextslide{} Blue wins if the total is positive, Red wins if the total is negative, and the second player wins if the total is 0. With this, we can see that the empty position has value 0. Note that we can prove that adding the values together is well defined and follows the usual properties of addition, but we won't here.\nextslide{}
+
+\section{A Non-Integer Value}
+Lets consider part of the example before, calling its value $a$. We can see that Blue wins regardless of who goes first, so $a>0$.\nextslide{} If we add a red edge, Red now wins regardless, so $a<1$. To solve for $a$, consider the following position.\nextslide{} If Blue goes first (and the players play perfectly), Red will win. However, if Red goes first, Blue will win. Thus the total value is 0 and $$a+a-1=0 \implies a=\frac{1}{2}.$$\nextslide{}
+
+\section{Tweedle-Dum \& Tweedle-Dee}
+Before we discover more values, I'll butt in quickly to show that we can also find a position of $-\frac{1}{2}$. If we flip all the edges to the other colour, we flip the advantage; ``negate it" if you will.\nextslide{} The ``Tweedle-Dum, Tweedle-Dee" theorem proves this: by adding $b$ to its inverse, we can match any move\nextslide{} in the other component\nextslide{}, forcing the total to be 0.\nextslides{} In this way $$b + b' = 0 \implies b' = -b.$$ This means that we have a position of value $-\frac{1}{2}$.\nextslide{}
+
+\section{The Reals}
+We can use a similar argument to how we found $\frac{1}{2}$ can be used to calculate the value of any component. Some of the most important components are vertical stacks. In fact, these allow us to create any dyadic rationals; that is rationals with the denominator a power of 2.\nextslide{}
+
+If we represent the red edges as 0's and the blue edges as 1's, then we have a binary decimal representing the value. We treat the initial blue-red change as the decimal point and add a 1 to the end.\nextslide{} We can add blue edges to the beginning to increase it by 1 or negate it to get negative rationals. In fact, all finite Hackenbush games with only red and blue edges have a value of a dyadic rational.\nextslide{} Allowing for infinite sequences, we now have all the reals, as binary sequences.\nextslide{} Here is a brief number line.\nextslide{}
+
+\section{Raising the Temperature \& Getting Fuzzy}
+So far, our games have not been that intense. Our players would rather not move if they could avoid it. The amount players want to move first is known as the temperature of the game, and for Hackenbush, the temperature is absolute zero.
+
+To change this, I'm going to introduce a green edge that either player can cut. Consider just a green edge and let its value be $c$.\nextslide{} If we add a red edge, red wins regardless of who goes first, so $c<1$.\nextslide{} Likewise, we can test $c-\frac{1}{2}$, $c-\frac{1}{4}$ and so on and we will find that red always wins, so $c<\frac{1}{2^n}$ for any $n\in\mathbb{N}$.\nextslides{} Similarly, we can add positive components to show that $-\frac{1}{2^n}>c$ for all $n\in\mathbb{N}$.\nextslide{} You might be temped to say that $c=0$, however, in our first games, this happened when the second player to start wins, whereas here, the first play starting wins.\nextslide{} Because of this, we say that $c$ is fuzzy with 0, written as $c\fuzzy 0$. You can think that $c$ is confused with zero, and will often have similar advantage. We will also give $c$ the name of $\star$.\nextslide{} On the number-line, this is usually drawn as a cloud around 0. Also, note that by Tweedle-Dum Tweedle-Dee, $-\star=\star$.\nextslide{}
+
+To be a bit more explicit, $x\fuzzy y$ if the first player wins $x-y$ and we say $x$ is fuzzy if $x\fuzzy 0$. This provides not a trichotomy as we are used to, but a quadotomy.\nextslide{}
+
+\section{Deeper into the Fuzz}
+It may not be apparent why we cannot have $\star=0$, so I'll give example of another fuzzy position.\nextslide{} Adding any positive number $n$, we get $d+n>0$\nextslide{} and subtracting away $d-n<0$.\nextslides{} We can see that who ever goes first wins, so $d$ is fuzzy.\nextslide{} However, if we add $d$ to itself, Blue can win regardless of who goes first, so $2d>0$. Hence $2d$ is positive, so we cannot have $d=0$.\nextslide{}
+
+\section{The Ups and Downs}
+Lets consider another example where we add $d$ and $\star$. We can see that Blue wins regardless of who goes first. Thus, $f$ is positive.\nextslide{} However, if we add any other negative real number, and Red will still win regardless, so $f<\frac{1}{2^n}$ for all $n\in\mathbb{N}$.\nextslide{} In this sense, we have a ``value" that is positive, but smaller than all real positive numbers. Note that we are using the term ``value" or ``position" here, not number.\nextslide{} We will call this value $\up$. We call the negative of up $\down$.\nextslides{}
+
+For interest sake, we will also add $\up$ to $\up$. As $$\left(\up + \up\right) - \up = \up > 0,$$ we have $\up+\up>\up$. We call this $\doubleup$. Likewise, we have $$\doubledown=\down+\down,$$ and in general $$n.\up=\overbrace{\up+\up+\cdots+\up}^{n\text{ times}}.$$ We can now update our number-line around 0 to be more accurate.\nextslide{}
+
+\section{More Fuzziness with $\up\star$}
+We can now also give a name to $d$ from our previous example. It is just $$\up - \star = \up + \star = \up\star.$$ Note that we use $\up\star$ to represent $\up+\star$ and we do similarly for all other ups and downs.\nextslide{}
+
+Let's see where $\up\star$ fits into the number-line. We showed that it is fuzzy with 0. We also have that $$\up\star - \up = \star \fuzzy 0,$$ so $\up\star \fuzzy \up$. However, we should note that $$\up\star - \down = \up + \star + \up = \doubleup\star > 0,$$ so $\up\star>\down$. When comparing $\up\star$ to $\doubleup$ and $3.\star$, we have $$\up\star - \doubleup = \star - \up = \down\star \fuzzy 0$$ and $$\up\star - 3.\up = \star - \doubleup = \doubledown\star < 0.$$ Hence $\up\star \fuzzy \doubleup$, but less than $3.\up$. We can now finally draw $\up\star$ on the number-line.
+
+Similar calculations can be done for other values. Putting them on our number-line, we get...
+
+\section{Other Strange Creatures}
+I'm probably already overtime, so here are a few other cool things:
+
+Hackenbush is not the only game. We have generalised notation where we can represent any ``game". A game needs to have only two-players, be entirely deterministic with no secret information and always finish in a finite number of moves. We can represent any position as two sets: one for all the moves Red can take and their resulting positions, and one for all the moves Blue can take and their resulting positions. Usually this is drawn in bra-ket like notation. We can then represent $\up\star$ as...
+
+We call $$\overbrace{\star+\star+\cdots+\star}^{n\text{ times}} = \star n.$$ For $n\geq2$, on the number-line, this is still fuzzy, but for a smaller region. In Hackenbush, these are just lines of green edges. If you've ever heard of the game of nim, these are isomorphic to the stacks, so we call them nimbers. If we add $\star n$ to $\star m$, we get $\star(n\oplus m)$ where $\oplus$ is binary XOR.
+
+So far we've seen fuzzy values, but numbers that are fuzzy for only infinitesimal ranges. However, in other games, we can have positions that are fuzzy over large regions, such as $\pm2$.
+
+We also briefly discussed temperature; how much you want to go first. The games we've played have still been very cold. We much rather add some positive number than go first (i.e. we would much rather a blue edge over going first), so the temperature is 0. However, sometimes, going first provides such an advantage that we would still win if we added many red edges. We then say this game is hot, and the temperature of the game is equal to the advantage of going first. The temperature of games are determined from their thermographs.
+
+So far, we have assumed the players play perfectly, however we can use temperature to determine the winning strategy. The trick is that players always want to play in the hottest component; the hottest components are the most attractive.
+
+We can also define multiplication on games that is distributive and commutative.
+
+Games are not closed under addition.
+
+Finite games (those with a finite number of moves) are closed, and form a field.
+
+A lot of maths around infinite games relies upon the set theory you use.
+
+``tiny" and ``miny" ($+_G$ and $-_G$) which are the smallest possible positive and negative values.
+
+Every small valued game has an atomic weight or uppitiness, which is how many ups it is approximately equal to.
+
+And so on.
+
+\section*{Applications}
+The largest application for the pure mathematician is pleasure and aesthetic beauty. However, it has also been used to work out the perfect strategy in certain endgames of Go. Go is the perfect game for this, as the end game is often comprised of many separated components, so if we can find the values, we can determine who will win and the prefect strategy by adding them together. Apparently some work has been done to turn timetabling problems into games so the same analysis techniques can be used as well.
+
+\section*{Further Reading/Viewing}
+Most of this content comes from the combinatorial game theory bible ``Winning Ways for Your Mathematical Plays" by  Elwyn R. Berlekamp, John H. Conway, and Richard K. Guy. It is a very entertaining read, with wordplay, diagrams and an Alice in Wonderland style. It starts from the very beginning, so no real prerequisites are required. However, if you are interested, Don Knuth has a great eponymous introduction to surreal numbers (which are a subset of game values and use similar notation) which can help.
+
+I also have to suggest some Youtube videos. Owen Maitzen's ``HACKENBUSH: a window to a new world of math" is a really great piece that I took a lot of inspiration from. I'd also suggest Elwyn Berlekamp's channel for a range of combinatorial game theory videos from the expert himself. Also, here's a website where you can play Hackenbush.
+
+Thank you for listening!
+
+\end{document}

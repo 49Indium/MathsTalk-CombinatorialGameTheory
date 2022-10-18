@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-6, 0) {};
+		\node [style=none] (1) at (6, 0) {};
+		\node [style=Standard, label=below:{$d$}] (2) at (-2, 0) {};
+		\node [style=Standard] (3) at (-2, 3) {};
+		\node [style=Standard] (4) at (-2, 6) {};
+		\node [style=Standard] (5) at (2, 6) {};
+		\node [style=Standard] (6) at (2, 3) {};
+		\node [style=Standard, label=below:{$d$}] (7) at (2, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=Ground] (0.center) to (1.center);
+		\draw [style=Green] (3) to (2);
+		\draw [style=Green] (6) to (7);
+		\draw [style=Blue] (4) to (3);
+		\draw [style=Blue] (5) to (6);
+	\end{pgfonlayer}
+\end{tikzpicture}

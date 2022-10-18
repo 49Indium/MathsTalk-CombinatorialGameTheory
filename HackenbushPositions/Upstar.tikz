@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-6, 0) {};
+		\node [style=none] (1) at (6, 0) {};
+		\node [style=Standard, label=below:{$d$}] (2) at (0, 0) {};
+		\node [style=Standard] (3) at (0, 3) {};
+		\node [style=Standard] (4) at (0, 6) {};
+		\node [style=Standard, visible on=<2>, label=below:{\only<2>{$\frac{1}{2^n}$}}] (5) at (3, 0) {};
+		\node [style=Standard, visible on=<2>] (6) at (3, 3) {};
+		\node [style=Standard, visible on=<2>] (7) at (3, 6) {};
+		\node [style=Standard, visible on=<3>, label=below:{\only<3>{$-\frac{1}{2^n}$}}] (9) at (-3, 0) {};
+		\node [style=Standard, visible on=<3>] (10) at (-3, 3) {};
+		\node [style=Standard, visible on=<3>] (11) at (-3, 6) {};
+		\node [style=none] (12) at (3, 9) {};
+		\node [style=none] (13) at (-3, 9) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=Ground] (0.center) to (1.center);
+		\draw [style=Green] (3) to (2);
+		\draw [style=Blue] (4) to (3);
+		\draw [style=Blue, visible on=<2>] (6) to (5);
+		\draw [style=Red, visible on=<2>] (7) to (6);
+		\draw [style=Red, visible on=<2>, dashed] (12.center) to (7);
+		\draw [style=Red, visible on=<3>] (10) to (9);
+		\draw [style=Blue, visible on=<3>, dashed] (13.center) to (11);
+		\draw [style=Blue, visible on=<3>] (11) to (10);
+	\end{pgfonlayer}
+\end{tikzpicture}

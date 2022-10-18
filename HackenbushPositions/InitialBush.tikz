@@ -1,0 +1,58 @@
+\begin{tikzpicture}
+	\tikzstyle{every loop}=[looseness=25]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=GroundDot] (2) at (0, 0) {};
+		\node [style=Standard] (3) at (-2, 2) {};
+		\node [style=Standard] (4) at (-3, 4) {};
+		\node [style=Standard] (5) at (-2, 6) {};
+		\node [style=Standard] (6) at (-4, 1) {};
+		\node [style=Standard] (7) at (-5, 6) {};
+		\node [style=Standard] (8) at (-3, 9) {};
+		\node [style=Standard] (9) at (0.75, 7) {};
+		\node [style=Standard] (10) at (2, 2) {};
+		\node [style=Standard] (11) at (1, 4) {};
+		\node [style=Standard] (12) at (2, 6) {};
+		\node [style=Standard] (13) at (3, 5) {};
+		\node [style=Standard] (14) at (4, 3) {};
+		\node [style=Standard] (15) at (5, 5) {};
+		\node [style=Standard] (16) at (3, 1) {};
+		\node [style=Standard] (17) at (5, 1) {};
+		\node [style=Standard] (18) at (7, 2) {};
+		\node [style=Standard] (19) at (6, 3) {};
+		\node [style=Standard] (20) at (8, 4) {};
+		\node [style=Standard] (21) at (3, 1) {};
+		\node [style=Standard] (22) at (-5, 3) {};
+		\node [style=Standard] (23) at (-7, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=Red] (2) to (3);
+		\draw [style=Blue] (3) to (6);
+		\draw [style=Blue] (4) to (5);
+		\draw [style=Blue] (5) to (9);
+		\draw [style=Blue] (5) to (8);
+		\draw [style=Blue] (8) to (7);
+		\draw [style=Red] (9) to (8);
+		\draw [style=Red] (3) to (4);
+		\draw [style=Red] (4) to (7);
+		\draw [style=Red] (5) to (3);
+		\draw [style=Red] (10) to (2);
+		\draw [style=Blue] (11) to (10);
+		\draw [style=Blue, in=-135, out=135, loop] (11) to ();
+		\draw [style=Blue] (11) to (12);
+		\draw [style=Blue] (14) to (15);
+		\draw [style=Red] (10) to (14);
+		\draw [style=Red] (14) to (13);
+		\draw [style=Blue] (2) to (21);
+		\draw [style=Blue] (17) to (19);
+		\draw [style=Blue] (20) to (18);
+		\draw [style=Blue, in=90, out=0, loop] (20) to ();
+		\draw [style=Red] (21) to (17);
+		\draw [style=Red] (19) to (20);
+		\draw [style=Red] (17) to (18);
+		\draw [style=Red] (18) to (19);
+		\draw [style=Red, in=135, out=45, loop] (8) to ();
+		\draw [style=Red] (6) to (22);
+		\draw [style=Red] (6) to (23);
+		\draw [style=Blue] (23) to (22);
+	\end{pgfonlayer}
+\end{tikzpicture}

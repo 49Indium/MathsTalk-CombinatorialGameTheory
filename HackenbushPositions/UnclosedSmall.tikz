@@ -1,0 +1,35 @@
+\begin{tikzpicture}
+	\tikzstyle{every loop}=[looseness=50]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-3, 0) {};
+		\node [style=none] (1) at (3, 0) {};
+		\node [style=Standard] (2) at (-1.5, 0) {};
+		\node [style=Standard] (3) at (1.5, 0) {};
+		\node [style=Standard] (4) at (-1.5, 2.5) {};
+		\node [style=Standard] (5) at (1.5, 2.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=Ground] (0.center) to (1.center);
+		\draw [style=Green] (4) to (2);
+		\draw [style=Green] (5) to (3);
+		\draw [style=Blue, in=-90, out=-165, loop] (4) to ();
+		\draw [style=Blue, in=135, out=75, loop] (4) to ();
+		\draw [style=Blue, in=-165, out=135, loop] (4) to ();
+		\draw [style=Blue, in=75, out=45, loop] (4) to ();
+		\draw [style=Blue, in=15, out=45, loop] (4) to ();
+		\draw [style=Blue, in=-15, out=15, loop] (4) to ();
+		\draw [style=Blue, in=-30, out=-15, loop] (4) to ();
+		\draw [style=Blue, in=-45, out=-30, loop] (4) to ();
+		\draw [style=Blue, in=-60, out=-45, loop] (4) to ();
+		\draw [style=Blue, in=-60, out=-75, loop] (4) to ();
+		\draw [style=Red, in=-90, out=-165, loop] (5) to ();
+		\draw [style=Red, in=-165, out=135, loop] (5) to ();
+		\draw [style=Red, in=135, out=75, loop] (5) to ();
+		\draw [style=Red, in=75, out=45, loop] (5) to ();
+		\draw [style=Red, in=15, out=45, loop] (5) to ();
+		\draw [style=Red, in=15, out=-15, loop] (5) to ();
+		\draw [style=Red, in=-15, out=-30, loop] (5) to ();
+		\draw [style=Red, in=-30, out=-45, loop] (5) to ();
+		\draw [style=Red, in=-45, out=-60, loop] (5) to ();
+	\end{pgfonlayer}
+\end{tikzpicture}

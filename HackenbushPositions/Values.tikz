@@ -1,0 +1,54 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-8, 0) {};
+		\node [style=none] (1) at (8, 0) {};
+		\node [style=Standard, label=below:{$\frac{1}{2}$}] (2) at (-4, 0) {};
+		\node [style=Standard, label=below:{$\frac{1}{4}$}] (3) at (-2, 0) {};
+		\node [style=Standard, label=below:{$-\frac{1}{4}$}] (4) at (0, 0) {};
+		\node [style=Standard, label=below:{$\frac{3}{4}$}] (5) at (2, 0) {};
+		\node [style=Standard, label=below:{$-\frac{3}{2}$}] (6) at (4, 0) {};
+		\node [style=Standard, label=below:{$1$}] (7) at (-6, 0) {};
+		\node [style=Standard, label=below:{$\frac{3}{8}$}] (8) at (6, 0) {};
+		\node [style=Standard] (9) at (-6, 2) {};
+		\node [style=Standard] (10) at (-4, 4) {};
+		\node [style=Standard] (11) at (-4, 2) {};
+		\node [style=Standard] (12) at (-2, 2) {};
+		\node [style=Standard] (13) at (-2, 4) {};
+		\node [style=Standard] (14) at (-2, 6) {};
+		\node [style=Standard] (15) at (0, 2) {};
+		\node [style=Standard] (16) at (0, 4) {};
+		\node [style=Standard] (17) at (0, 6) {};
+		\node [style=Standard] (18) at (2, 2) {};
+		\node [style=Standard] (19) at (2, 4) {};
+		\node [style=Standard] (20) at (2, 6) {};
+		\node [style=Standard] (21) at (4, 2) {};
+		\node [style=Standard] (22) at (4, 4) {};
+		\node [style=Standard] (23) at (4, 6) {};
+		\node [style=Standard] (24) at (6, 2) {};
+		\node [style=Standard] (25) at (6, 4) {};
+		\node [style=Standard] (26) at (6, 6) {};
+		\node [style=Standard] (27) at (6, 8) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=Ground] (0.center) to (1.center);
+		\draw [style=Blue] (9) to (7);
+		\draw [style=Blue] (11) to (2);
+		\draw [style=Blue] (12) to (3);
+		\draw [style=Blue] (20) to (19);
+		\draw [style=Blue] (18) to (5);
+		\draw [style=Red] (10) to (11);
+		\draw [style=Red] (14) to (13);
+		\draw [style=Red] (4) to (15);
+		\draw [style=Red] (19) to (18);
+		\draw [style=Red] (13) to (12);
+		\draw [style=Blue] (17) to (16);
+		\draw [style=Blue] (16) to (15);
+		\draw [style=Red] (21) to (6);
+		\draw [style=Red] (22) to (21);
+		\draw [style=Blue] (23) to (22);
+		\draw [style=Blue] (24) to (8);
+		\draw [style=Red] (25) to (24);
+		\draw [style=Red] (26) to (25);
+		\draw [style=Blue] (27) to (26);
+	\end{pgfonlayer}
+\end{tikzpicture}

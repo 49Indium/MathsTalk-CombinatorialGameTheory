@@ -1,0 +1,34 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-7, 0) {};
+		\node [style=none] (1) at (7, 0) {};
+		\node [style=Standard] (2) at (-5.5, 0) {};
+		\node [style=Standard, label=above:{$0.$}] (3) at (-5.5, 2) {};
+		\node [style=Standard] (4) at (-4, 2) {};
+		\node [style=Standard] (5) at (-2.5, 2) {};
+		\node [style=Standard] (6) at (-1, 2) {};
+		\node [style=Standard] (7) at (0.5, 2) {};
+		\node [style=Standard] (8) at (2, 2) {};
+		\node [style=Standard] (9) at (3.5, 2) {};
+		\node [style=Standard] (10) at (5, 2) {};
+		\node [style=none] (11) at (6.5, 2) {};
+		\node [style=none, label=above:{$0$}] (12) at (-3.25, 2) {};
+		\node [style=none, label=above:{$1$}] (13) at (-1.75, 2) {};
+		\node [style=none, label=above:{$0$}] (14) at (-0.25, 2) {};
+		\node [style=none, label=above:{$1$}] (15) at (1.25, 2) {};
+		\node [style=none, label=above:{$0$}] (16) at (2.75, 2) {};
+		\node [style=none, label=above:{$1$}] (17) at (4.25, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=Ground] (0.center) to (1.center);
+		\draw [style=Blue] (3) to (2);
+		\draw [style=Red] (7) to (6);
+		\draw [style=Red] (3) to (4);
+		\draw [style=Red] (5) to (4);
+		\draw [style=Red] (8) to (9);
+		\draw [style=Red, dashed] (10) to (11.center);
+		\draw [style=Blue] (5) to (6);
+		\draw [style=Blue] (7) to (8);
+		\draw [style=Blue] (9) to (10);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-3, 0) {};
+		\node [style=none] (1) at (3, 0) {};
+		\node [style=Standard] (2) at (0, 0) {};
+		\node [style=Standard] (3) at (0, 3) {};
+		\node [style=Standard] (4) at (0, 6) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=Ground] (0.center) to (1.center);
+		\draw [style=Green] (3) to (2);
+		\draw [style=Blue] (4) to (3);
+	\end{pgfonlayer}
+\end{tikzpicture}

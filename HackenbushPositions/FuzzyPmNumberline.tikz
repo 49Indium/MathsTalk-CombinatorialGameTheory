@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\draw[latex-] (-6.5,0) -- (6.5,0) ;
+		\draw[-latex] (-6.5,0) -- (6.5,0) ;
+		\foreach \x in  {-6,-4,-2,0,2,4,6}
+		\draw[shift={(\x,0)},color=black] (0pt,3pt) -- (0pt,-3pt);
+		\foreach \x in {-6,-4,-2,0,2,4,6}
+		\draw[shift={(\x,0)},color=black] (0pt,0pt) -- (0pt,-3pt) node[below] {$\x$};
+		\node[cloud,
+			fill opacity=0.5,
+			fill = gray!10,
+			minimum width = 2.3cm,
+			minimum height = 1cm,
+			cloud puffs = 16,
+			cloud puff arc = 90,
+			draw = black] (c) at (0,0) {};
+		\node[above] at (0,0) {$\pm2$};
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,251 @@
+\documentclass{beamer}
+\usetheme{default}
+\usepackage{amsmath, amsfonts, amssymb, graphics}
+\usepackage{hyperref}
+
+\newcommand{\nextslide}{$\dagger$}
+\newcommand{\nextslides}{$\ddagger$}
+\newcommand{\fuzzy}{\parallel}
+\newcommand{\nfuzzy}{\nparallel}
+\renewcommand{\star}{\mathord{*}}
+\newcommand{\up}{\mathord{\uparrow}}
+\newcommand{\doubleup}{\mathord{\Uparrow}}
+\newcommand{\down}{\mathord{\downarrow}}
+\newcommand{\doubledown}{\mathord{\Downarrow}}
+
+\usepackage{xcolor}
+\definecolor{HRed}{RGB}{204,51,51}
+
+\usepackage{tikzit}
+\input{hackenbush.tikzstyles}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.symbols}
+
+\tikzset{
+    invisible/.style={opacity=0},
+    visible on/.style={alt={#1{}{invisible}}},
+    alt/.code args={<#1>#2#3}{%
+        \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+}
+
+
+
+\newcommand{\cut}[1]{#1}
+
+\title{Combinatorial Game Theory\\\& The Fuzzy Consequences}
+\author{Isaac Beh}
+\date{}
+
+\begin{document}
+\begin{frame}
+    \maketitle
+\end{frame}
+
+\begin{frame}{Introduction to Hackenbush}
+    \centering
+    \tikzfig{HackenbushPositions/InitialBush}
+\end{frame}
+\begin{frame}[noframenumbering]{Introduction to Hackenbush}
+    \centering
+    \onslide<12>{\textcolor{HRed}{Red Wins\\}}
+    \tikzfig{HackenbushPositions/InitialSpread}
+\end{frame}
+
+\begin{frame}{Basic Strategy \& Intuition}
+    \centering
+    \tikzfig{HackenbushPositions/Example1}
+\end{frame}
+
+\begin{frame}{The Integers}
+    \centering
+    \tikzfig{HackenbushPositions/Integers}\\
+    \bigskip
+    {\huge$\alt<1>{1}{\alt<2>{2}{\alt<3>{5}{\alt<4>{4}{3}}}}$}\\
+    \medskip
+    \visible<6>{$3>0$ so Blue wins}
+\end{frame}
+
+\begin{frame}{A Non-Integer Value}
+\centering
+    \tikzfig{HackenbushPositions/Half}\\
+    \bigskip
+    {\huge$\alt<1>{a}{\alt<2>{-1+a}{-1+a+a}}$}\\
+    \medskip
+    \alt<1>{Blue wins, so $a>0$}{\alt<2>{Red wins, so $-1+a<0$ and $a<1$}{Second player wins, so $-1+a+a=0$ and $a=\frac{1}{2}$}}
+\end{frame}
+
+\begin{frame}{Tweedle-Dum Tweedle-Dee}
+    \centering
+    \tikzfig{HackenbushPositions/NegativeHalf}
+\end{frame}
+\begin{frame}[noframenumbering]{Tweedle-Dum Tweedle-Dee}
+    \centering
+    \only<1-7>{
+        \onslide<7>{Second Player Wins\\}
+        \tikzfig{HackenbushPositions/Flowers}
+    }
+    \only<8>{\Huge$$-x + x = 0$$}
+\end{frame}
+
+\begin{frame}{The Reals}
+    \centering
+    \tikzfig{HackenbushPositions/Values}
+\end{frame}
+\begin{frame}[noframenumbering]{The Reals}
+\centering
+    \tikzfig{HackenbushPositions/Decimal1} \quad {$\frac{5}{16}$}\\
+    \bigskip
+    \pause
+    \tikzfig{HackenbushPositions/Decimal2} \quad {$2+\frac{1}{4} = \frac{9}{4}$}\\
+    \bigskip
+    \pause
+    \tikzfig{HackenbushPositions/Decimal3} \quad {$\frac{1}{3}$}
+\end{frame}
+\begin{frame}[noframenumbering]{The Reals}
+    \centering
+    \scalebox{0.8}{\tikzfig{HackenbushPositions/RationalNumberLine}}
+\end{frame}
+
+\begin{frame}{Raising the Temperature \& Getting Fuzzy}
+    \centering
+    \tikzfig{HackenbushPositions/GreenEdge}\\
+    \bigskip
+    {\huge$\alt<1>{c}{\alt<2>{-1+c}{\alt<3>{-\frac{1}{2^n}+c}{\alt<4>{c+1}{\alt<5>{c+\frac{1}{2^n}}{\alt<6>{c}{\star}}}}}}$}\\
+    \medskip
+    \alt<1>{}{\alt<2>{Red wins, so $-1+c<0$ and $c<1$}{\alt<3>{Red wins, so $-\frac{1}{2^n}+c<0$ and $a<\frac{1}{2}$}{\alt<4>{Blue wins, so $c+1>0$ and $-1<c$}{\alt<5>{Blue wins, so $c+\frac{1}{2^n}>0$ and $-\frac{1}{2^n}<c$}{\alt<6>{$-\frac{1}{2^n}<c<\frac{1}{2^n}$ for all $n\in\mathbb{N}$}{$\star\fuzzy0$}}}}}}
+    \only<7>{}
+\end{frame}
+\begin{frame}[noframenumbering]{Raising the Temperature \& Getting Fuzzy}
+    \ctikzfig{HackenbushPositions/FuzzyStarZoomOutNumberline}
+    \medspace\pause
+    \begin{table}[]
+        \begin{tabular}{@{}l|ll@{}}
+            $A<B$       & $B-A>0$       & or Blue always wins $B-A$       \\
+            $A=B$       & $B-A=0$       & or the second player wins $B-A$ \\
+            $A>B$       & $B-A<0$       & or Red always wins $B-A$        \\
+            $A\fuzzy B$ & $B-A\fuzzy 0$ & or the first player wins $B-A$
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Deeper into the Fuzz}
+    \centering
+    \tikzfig{HackenbushPositions/Upstar}\\
+    \bigskip
+    {\huge$\alt<1>{d}{\alt<2>{d+\frac{1}{2^n}}{\alt<3>{-\frac{1}{2^n}+d}{d}}}$}\\
+    \medskip
+    \alt<1>{}{\alt<2>{Blue wins, so $d+\frac{1}{2^n}>0$ and $-\frac{1}{2^n}<d$}{\alt<3>{Red wins, so $-\frac{1}{2^n}+d<0$ and $d<\frac{1}{2^n}$}{\alt<4>{$-\frac{1}{2^n}<d<\frac{1}{2^n}$ for all $n\in\mathbb{N}$}{$d\fuzzy 0$}}}}
+    \only<5>{}
+\end{frame}
+\begin{frame}[noframenumbering]{Deeper into the Fuzz}
+    \centering
+    \tikzfig{HackenbushPositions/TwoUpstars}\\
+    \bigskip
+    {\huge$d+d$}\\
+    \medskip
+    Blue wins, so $d+d>0$ and thus $d\neq 0$.
+\end{frame}
+
+\begin{frame}{The Ups and Downs}
+    \centering
+    \tikzfig{HackenbushPositions/Up}\\
+    \bigskip
+    {\huge$\alt<1>{f}{\alt<2>{-\frac{1}{2^n}+f}{\alt<3>{f}{\up}}}$}\\
+    \medskip
+    \alt<1>{Blue wins, so $f>0$}{\alt<2>{Red wins, so $-\frac{1}{2^n}+f<0$ and $f<\frac{1}{2^n}$}{\alt<3>{$0<f<\frac{1}{2^n}$ for all $n\in\mathbb{N}$}{$0<\up<\frac{1}{2^n}$ for all $n\in\mathbb{N}$}}}
+    \only<5>{}
+\end{frame}
+\begin{frame}[noframenumbering]{The Ups and Downs}
+    \centering
+    \begin{itemize}
+        \setlength{\itemsep}{20pt}
+        \item $\down:=-\up$
+        \item $\doubleup:=\up+\up$ with $\doubleup - \up = \up > 0$ so $\doubleup > \up$
+        \item $\doubledown:=\down+\down$
+        \item $n.\up:=\overbrace{\up+\up+\cdots+\up}^{n\text{ times}}$
+        \item $n.\down:=\overbrace{\down+\down+\cdots+\down}^{n\text{ times}}.$
+    \end{itemize}
+    \pause
+    \ctikzfig{HackenbushPositions/Numberline}
+\end{frame}
+
+\begin{frame}{More Fuzziness with $\up\star$}
+    \centering
+    \begin{itemize}
+        \newcommand{\scalefactor}{0.4}
+        \setlength{\itemsep}{20pt}
+        \item $\up\star:=\up+\star = \up-\star = \scalebox{\scalefactor}{\tikzfig{HackenbushPositions/UpSmall}} - \scalebox{\scalefactor}{\tikzfig{HackenbushPositions/StarSmall}} = \scalebox{\scalefactor}{\tikzfig{HackenbushPositions/UpstarSmall}}$
+        \item $\down\star:=\down+\star$
+        \item $n.\up\star:=n.\up+\star$
+        \item $n.\down\star:=n.\down+\star$
+    \end{itemize}
+\end{frame}
+\begin{frame}[noframenumbering]{More Fuzziness with $\up\star$}
+    \centering
+    \begin{itemize}
+        \newcommand{\scalefactor}{0.4}
+        \setlength{\itemsep}{20pt}
+        \item $\up\star - \up = \star \fuzzy 0$, so $\up\star \fuzzy \up$
+        \item $\up\star - \down = \up + \star + \up = \doubleup\star > 0$, so $\up\star>\down$
+        \item $\up\star - \doubleup = \star - \up = \down\star \fuzzy 0$, so $\up\star\fuzzy \doubleup$
+        \item $\up\star - 3.\up = \star - \doubleup = \doubledown\star < 0$, so $\up\star< 3.\up$
+    \end{itemize}
+    \pause
+    \ctikzfig{HackenbushPositions/FuzzyNumberline}
+    \pause
+    \ctikzfig{HackenbushPositions/FuzzyStarNumberline}
+    \pause
+    \ctikzfig{HackenbushPositions/FuzzyDownStarNumberline}
+\end{frame}
+
+\begin{frame}{Other Strange Creatures}
+    \begin{itemize}
+        \item Other games must be:
+        \begin{itemize}
+            \item 2-player
+            \item Deterministic
+            \item No hidden information
+            \item Finite
+        \end{itemize}
+        \newcommand{\scalefactor}{0.4}
+        \item Games have braket notation like: $$\up\star = \scalebox{\scalefactor}{\tikzfig{HackenbushPositions/UpstarSmall}} = \left\langle \scalebox{\scalefactor}{\tikzfig{HackenbushPositions/EmptySmall}} \middle| \scalebox{\scalefactor}{\tikzfig{HackenbushPositions/StarSmall}}, \scalebox{\scalefactor}{\tikzfig{HackenbushPositions/EmptySmall}} \right\rangle = \left\langle 0 \middle| \star, 0 \right\rangle$$
+        \item $\star n := \langle\star(n-1),\ldots,\star2,\star|\star(n-1),\ldots,\star2,\star\rangle$ and $\star n + \star m = \star (n\text{ XOR }m)$
+        \ctikzfig{HackenbushPositions/FuzzyStarnNumberline}
+    \end{itemize}
+\end{frame}
+\begin{frame}[noframenumbering]{Other Strange Creatures}
+    \begin{itemize}
+        \newcommand{\scalefactor}{0.4}
+        \item \ctikzfig{HackenbushPositions/FuzzyPmNumberline}
+        \item Hot games incentivise quick action. The temperature of the game is equal to the advantage of going first and is determined from its thermographs.
+        \item The hottest components are the most attractive.
+        \item Multiplication is distributive and commutative.
+        \item Games are not closed under addition, e.g. \scalebox{\scalefactor}{\tikzfig{HackenbushPositions/UnclosedSmall}}
+        \item Finite games are closed and form a field.
+        \item Infinite game results rely upon the set theory axioms.
+        \item ``Tiny" and ``miny" ($+_G$ and $-_G$) are the smallest possible positive and negative values.
+        \item Every small valued game has an atomic weight or uppitiness, which is how many $\up$'s it is approximately equal to.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Applications}
+    \begin{itemize}
+        \setlength{\itemsep}{20pt}
+        \item Pleasure and aesthetic beauty
+        \item Go
+        \item Timetabling?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Further Reading/Viewing}
+    \begin{itemize}
+        \setlength{\itemsep}{20pt}
+        \item ``Winning Ways for Your Mathematical Plays" by  Elwyn R. Berlekamp, John H. Conway, and Richard K. Guy
+        \item \href{https://www.youtube.com/watch?v=ZYj4NkeGPdM}{HACKENBUSH: a window to a new world of math} by Owen Maitzen
+        \item \href{https://www.youtube.com/channel/UCF2fIXCrN_aOfluJ-8zEbeA}{Elwyn Berlekamp's channel}
+        \item \url{https://hackenbush.xyz/}
+    \end{itemize}
+\end{frame}
+\end{document}
